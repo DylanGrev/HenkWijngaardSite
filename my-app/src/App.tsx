@@ -10,7 +10,7 @@ import background from './images/Henk_Wijngaard_background.png';
 
 function App() {
   return (
-    <div className="app" style={{ backgroundImage: `url(${background})` }}>
+    <div className="app" style={{backgroundImage: `url(${background})`}}>
       {/* background applied via inline style on .app */}
       <nav className="navbar">
         <div className="nav-container">
@@ -42,6 +42,14 @@ function App() {
       <header className="banner" id="home">
         <img src={HomepageBanner} alt="" />
       </header>
+
+
+        <div className="content">
+          <h1>Welkom op de officiële website van Henk Wijngaard!</h1>
+          <p>Hier vind je het laatste nieuws, aankomende optredens en meer over Henk's muzikale reis.</p>
+        </div>
+
+
       <footer className="footer">
 
         <p className='footerText'>© 2025 Henk Wijngaard / Picobello BV. All rights reserved.</p>  
