@@ -9,14 +9,13 @@ import spotifyIcon from './images/icons/spotify_icon.png'
 import facebookIcon from './images/icons/facebook_icon.png'
 import youtubeIcon from './images/icons/youtube_icon.png'
 import HomepageBanner from './images/Henk_Wijngaard_banner02.png'
-import background from './images/Henk_Wijngaard_background.png'
 
 function Root() {
   const isHome = window.location.pathname.startsWith('/home')
   
 
   return (
-    <div className="app" style={{ backgroundImage: `url(${background})` }}>
+    <div className="app" >
       {/* background applied via inline style on .app */}
       <nav className="navbar">
         <div className="nav-container">
