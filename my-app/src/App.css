@@ -6,12 +6,21 @@
   --text-dark: #1a202c;
 }
 
+.app {
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
 .contentContainer {
   display: flex;
   gap: 24px;
   align-items: flex-start;
   margin: 40px 18%;
-  margin-bottom: auto;
+  margin-bottom: 10px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 15px;

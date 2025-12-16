@@ -48,10 +48,10 @@ function Root() {
       <header className="banner" id="home">
         <img src={HomepageBanner} alt="" />
       </header>
-
+      
       {/* inject App (all content from App.tsx) only when the path starts with /home */}
       {isHome && <App />}
-
+      
       <footer className="footer">
         <p className="footerText">© 2025 Henk Wijngaard / Picobello BV. All rights reserved.</p>
       </footer>
