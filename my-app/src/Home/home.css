@@ -1,5 +1,102 @@
-.HomeContainer {
-    h1 {
-        color: yellow;
-    }
+:root {
+  --primary-color: #4a5568;
+  --secondary-color: #6e91ce;
+  --accent-color: #0ea5e9;
+  --text-light: #e2e8f0;
+  --text-dark: #1a202c;
+}
+
+.contentContainer {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin: 40px 18%;
+  margin-bottom: 10px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+}
+
+
+.mainColumn {
+  flex: 1;
+  min-width: 0;
+}
+.textBox {
+  background-color: rgba(202, 199, 199, 0.908);
+  margin: 0;
+  padding: 16px;           
+  border-radius: 20px;
+  text-align: left;
+  max-width: 720px;        
+}
+
+.sideBoxes {
+  width: 360px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+
+.smallStack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 180px;
+}
+
+.youtubeBox,
+.facebookBox {
+  height: 140px;          
+  background-color: rgba(79, 105, 148, 0.12);
+  border-radius: 12px;
+  overflow: hidden;       
+}
+
+
+.spotifyBox {
+  width: 160px;
+  height: 300px;           
+  background-color: rgba(79, 105, 148, 0.12);
+  border-radius: 12px;
+  overflow: hidden;        
+}
+
+/* maakt de images net zo groot als de box zelf */
+.youtubeBox img.socialIcon,
+.facebookBox img.socialIcon,
+.spotifyBox img.socialIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       
+  display: block;
+  border-radius: 0;        
+}
+
+
+@media (max-width: 900px) {
+  .contentContainer {
+    flex-direction: column;
+    margin: 20px;
+  }
+  .sideBoxes {
+    width: 100%;
+    flex-direction: row;
+    gap: 12px;
+  }
+  .smallStack {
+    width: 50%;
+    flex-direction: column;
+  }
+  .youtubeBox,
+  .facebookBox {
+    flex: 1;
+    height: 120px;
+  }
+  .spotifyBox {
+    width: 50%;
+    height: 160px;
+  }
 }
