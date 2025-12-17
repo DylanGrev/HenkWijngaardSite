@@ -9,8 +9,6 @@ import spotifyImage from './images/socials/Henk_Wijngaard_Spotify.png';
 
 function App() {
   return (
-   
-
     <div className="app">
         <div className="contentContainer">
           <div className="mainColumn">
@@ -34,12 +32,7 @@ function App() {
             <div className='spotifyBox'><a href="https://open.spotify.com/artist/0EyzZUO2ycn0hLjKDFT7Hb?si=iPFRXhvOSm6ervMQwLOUaw" target="_blank" rel="noopener noreferrer"><img src={spotifyImage} alt="Spotify" className="socialIcon" /></a></div>
           </aside>
         </div>
-
-
     </div>
-
-    
-    
   )
 }
 
