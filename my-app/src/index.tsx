@@ -7,6 +7,10 @@ import Contact from './Contact'
 import './index.css'
 
 import Header from './components/Header'
+import Agenda from './Agenda'
+import Hits from './Hits'
+import Biografie from './Biografie'
+import Admin from './AdminPanel'
 import Footer from './components/Footer'
 
 
@@ -18,6 +22,10 @@ function Root() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
+                    <Route path="/agenda" element={<Agenda />} />
+                    <Route path="/hits" element={<Hits />} />
+                    <Route path="/biografie" element={<Biografie />} />
+                    <Route path="/admin" element={<Admin />} />
           </Routes>
         </BrowserRouter>
       </main>
