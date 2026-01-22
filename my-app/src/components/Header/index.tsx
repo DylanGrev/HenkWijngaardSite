@@ -11,6 +11,7 @@ export default function Header() {
 <>
 
       {/* background applied via inline style on .app */}
+      <div>
       <nav className="navbar">
         <div className="nav-container">
           <div id="logoText">Henk Wijngaard</div>
@@ -41,6 +42,7 @@ export default function Header() {
       <header className="banner" id="home">
         <img src={HomepageBanner} alt="" />
       </header>
+      </div>
 
     </>
     )

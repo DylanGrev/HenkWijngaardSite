@@ -1,8 +1,8 @@
 body {
   background-image: url('./images/Henk_Wijngaard_background.png');
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-size: cover;
-  background-position: center center;
+
 
   /* optional: keep background fixed during scroll:
      background-attachment: fixed;
