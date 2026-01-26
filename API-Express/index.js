@@ -1,14 +1,25 @@
 const express = require('express')
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
+const cors = require('cors');
 
-// Initialize app FIRST
 const app = express()
 const port = 5170
 
+// ✅ CORS Configuration - PUT THIS BEFORE ROUTES
+app.use(cors({
+    origin: 'http://localhost:5173', // Your frontend URL
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// ✅ Parse JSON bodies
+app.use(express.json());
+
 const swaggerOptions = {
   swaggerDefinition: {
-    openapi: '3.0.0', // Changed from 'myapi' to 'openapi'
+    openapi: '3.0.0',
     info: {
       title: 'My API',
       version: '1.0.0',
@@ -16,21 +27,20 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:5170', // Changed to match your port
+        url: 'http://localhost:5170',
       },
     ],
   },
-  apis: ['routes.js'], // files containing annotations as above
+  apis: ['routes.js'],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-
-
-// Load routes AFTER app is initialized and swagger is set up
+// Load routes
 require('./routes.js')(app);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`✅ Server listening on port ${port}`)
+    console.log(`🌐 Frontend allowed from: http://localhost:5173`)
 })
