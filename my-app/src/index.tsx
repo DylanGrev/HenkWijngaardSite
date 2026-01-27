@@ -24,7 +24,7 @@ function Root() {
             <Route index element={<Home />} />
                     <Route path="/agenda" element={<Agenda />} />
                     <Route path="/hits" element={<Hits />} />
-                    <Route path="/biografie" element={<Biografie />} />
+                    <Route path="/over" element={<Biografie />} />
                     <Route path="/admin" element={<Admin />} />
           </Routes>
         </BrowserRouter>

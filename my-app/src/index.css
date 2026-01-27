@@ -3,17 +3,18 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  background-attachment: scroll;
 
   /* optional: keep background fixed during scroll:
-     background-attachment: fixed;
+
   */
 }
 
 #root {
-      display: flex;
-    flex-flow: column;
+  display: flex;
+  flex-flow: column;
 }
 
 main {
-    flex: 1;
+  flex: 1;
 }

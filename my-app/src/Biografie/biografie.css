@@ -1,3 +1,32 @@
-#BiografieTekst {
-    color: cyan;
+.contentContainer {
+  display: flex;
+  gap: 24px;
+  margin: 40px 18%;
+  margin-bottom: 10px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+}
+
+.mainColumn {
+  display: flex;        
+  width: 100%;
+}
+
+.textBox {
+  width: 100%;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  background-color: rgba(202, 199, 199, 0.908);
+  margin: 0;
+  padding: 16px;
+  border-radius: 20px;
+  text-align: left;
+  
+}
+
+h1 {
+  font-size: 18px;
+  color: #3467a1;
+  font-weight: bold;
 }

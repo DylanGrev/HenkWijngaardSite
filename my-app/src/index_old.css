@@ -103,7 +103,7 @@ body {
   border-bottom-right-radius: 20px;
   margin-left: 18%; /* keep side margins */
   margin-right: 18%; /* keep side margins */
-  padding: 24px 20px; /* keep inner spacing */
+  padding: 10px 20px;
 }
 
 .app {
