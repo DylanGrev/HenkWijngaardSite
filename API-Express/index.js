@@ -10,9 +10,11 @@ const port = 5170
 app.use(cors({
     origin: 'http://localhost:5173', // Your frontend URL
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+app.use('/uploads', express.static('uploads'));
 
 // ✅ Parse JSON bodies
 app.use(express.json());

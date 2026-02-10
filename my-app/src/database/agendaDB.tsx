@@ -4,6 +4,7 @@ export interface AgendaItem {
     datum: string;
     tijd: string;
     info: string;
+    img:  string;
 }
 
 export const getAPIData = async (): Promise<AgendaItem[]> => {
@@ -20,11 +21,25 @@ export const getAPIData = async (): Promise<AgendaItem[]> => {
         // Return all items as array
         const items: AgendaItem[] = Array.isArray(result) ? result : [result];
         
-        console.log("Fetched agenda data:", items);
-        return items;
+        const formattedItems = items.map(item => ({
+            ...item,
+            datum: formatDutchDate(item.datum)
+        }));
+
+        console.log("Fetched agenda data:", formattedItems);
+        return formattedItems;
 
     } catch (error) {
         console.error("Error fetching agenda data:", error);
         return [];
     }
+};
+
+const formatDutchDate = (isoDateString: string): string => {
+    const date = new Date(isoDateString);
+    return date.toLocaleDateString('nl-NL', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    }); // Returns "10 februari 2026"
 };

@@ -1,16 +1,31 @@
 const personen = require('./personen.json');
 const conn_db = require("./db_conn");
+const multer  = require('multer');
+const fs = require('fs');
+const path = require('path');
 
 const dbagenda = require("./db_info_folder/db_agenda");
 const dbAgendaInsert = require("./db_info_folder/db_agenda_insert");
 
-console.log("conn_db loaded:", conn_db); // Debug line
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads')
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, 'temp-' + uniqueSuffix + '.' + file.originalname.split('.').pop());
+  }
+})
+
+const multerInstance = multer({ storage: storage })
+
+console.log("conn_db loaded:", conn_db);
 
 module.exports = function (app) {
 
   /**
    * @swagger
-   * /:
+   * /1:
    *   get:
    *     summary: Test met een tekst
    *     description: Geeft een tekst met Hallo Wereld terug
@@ -20,7 +35,7 @@ module.exports = function (app) {
    *       200:
    *         description: Successfully retrieved info from root
    */
-  app.get('/', (req, res) => {
+  app.get('/1', (req, res) => {
     res.send('Hallo Wereld!')
   });
 
@@ -45,7 +60,7 @@ module.exports = function (app) {
    * /agenda:
    *   get:
    *     summary: Test met database
-   *     description: Geeft een JSON met personen terug van de database
+   *     description: Geeft info uit de db
    *     tags:
    *       - Agenda DB
    *     responses:
@@ -59,22 +74,48 @@ module.exports = function (app) {
     dbagenda(conn_db, req, res);
   });
 
+
 /**
  * @swagger
- * /agenda/insert:
- *   get:
- *     summary: Insert test data into database
- *     description: Inserts test data into the agenda_henk table
+ * agenda/upload:
+ *   post:
+ *     summary: Upload a file
+ *     description: Upload a single file using multipart/form-data
  *     tags:
- *       - Agenda DB
+ *       - File Upload
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               file:
+ *                 type: string
+ *                 format: binary
+ *                 description: The file to upload
  *     responses:
  *       200:
- *         description: Successfully inserted test data into agenda_henk
+ *         description: File uploaded successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 filename:
+ *                   type: string
+ *       400:
+ *         description: No file uploaded
  */
-app.post('/agenda/insert', (req, res) => {
-
-    dbAgendaInsert(conn_db, req, res);
-
-});
+  app.post('/agenda/upload', multerInstance.single('logo'), (req, res) => {
+    console.log("Upload route hit");
+    console.log("req.file:", req.file);
+    console.log("req.body:", req.body);
+    
+    // Pass conn_db, req, res, and fs to the insert function
+    dbAgendaInsert(conn_db, req, res, fs, path);
+  });
 
 };

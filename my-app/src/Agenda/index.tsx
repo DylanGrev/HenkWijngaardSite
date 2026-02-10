@@ -5,6 +5,7 @@ import { getAPIData, type AgendaItem } from '../database/agendaDB';
 export default function Agenda() {
     const [agendaItems, setAgendaItems] = useState<AgendaItem[]>([]);
     const [loading, setLoading] = useState(true);
+    
 
     useEffect(() => {
         getAPIData().then((items) => {
@@ -21,6 +22,8 @@ export default function Agenda() {
         return <div className="contentContainer">Loading...</div>;
     }
 
+
+    
     return (
         <div className="contentContainer">
             {agendaItems.length === 0 ? (
@@ -36,9 +39,11 @@ export default function Agenda() {
                             <div className="agendaInfo">{item.info}</div>
                         </div>
                         <div className="agendaImageWrapper">
-                            <img className="agendaImage" alt={`${item.evenement} logo`}/>
+                            <img className="agendaImage" src={`http://localhost:5170/uploads/${item.img}`} alt={`${item.evenement} logo`}/>
+                    
                         </div>
                     </div>
+                    
                 ))
             )}
         </div>
